@@ -4,10 +4,11 @@ Html5Qrcode.getCameras().then(cameras => {
       * devices would be an array of objects of type: 
       * { id: "id", label: "label" }
       */
-      if (devices && devices.length) {
-          var cameraId = devices[0].id; 
+      if (cameras && cameras.length) {
+          
+          var cameraId = cameras[0].id; 
          // Create instance of the object. The only argument is the "id" of HTML element created above.
-            const html5QrCode = new Html5Qrcode("scanner");
+            const html5QrCode = new Html5Qrcode("qr-reader");
             html5QrCode.start(
                 cameraId, // retreived in the previous step. 
                 {
@@ -30,4 +31,5 @@ Html5Qrcode.getCameras().then(cameras => {
        }
   }).catch(err => { 
       // handle err
+      console.log(err.message)
   });
